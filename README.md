@@ -1,4 +1,4 @@
-🚀 Space Defender
+ 🚀 Space Defender
 
 **UAS Pemrograman Berorientasi Objek**  
 Game sederhana berbasis OOP menggunakan Python dan Pygame
@@ -51,12 +51,7 @@ space_defender/
 ├── enemy.py             # Enemy classes (Inheritance & Polymorphism)
 ├── bullet.py            # Bullet class
 ├── game_manager.py      # Game logic coordinator
-│
-├── README.md            # Project documentation
-├── requirements.txt     # Python dependencies
-└── docs/
-    ├── class_diagram.png
-    └── laporan.pdf
+├──laporan.pdf
 ```
 
 ---
