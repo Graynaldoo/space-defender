@@ -9,6 +9,9 @@ SCREEN_HEIGHT = 600
 FPS = 60
 BG_COLOR = (10, 10, 30)
 
+# Generate stars once (di luar game loop)
+STARS = [(random.randint(0, SCREEN_WIDTH), random.randint(0, SCREEN_HEIGHT)) for _ in range(100)]
+
 def main():
     """Main function untuk menjalankan game"""
     # Initialize Pygame
@@ -54,12 +57,9 @@ def main():
         # Draw background
         screen.fill(BG_COLOR)
         
-        # Draw stars background
-        for i in range(100):
-            random.seed(i)  # Same stars every frame
-            x = random.randint(0, SCREEN_WIDTH)
-            y = random.randint(0, SCREEN_HEIGHT)
-            pygame.draw.circle(screen, (255, 255, 255), (x, y), 1)
+        # Draw stars background (dari list yang sudah dibuat)
+        for star_pos in STARS:
+            pygame.draw.circle(screen, (255, 255, 255), star_pos, 1)
         
         # Draw game
         game_manager.draw(screen)
