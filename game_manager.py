@@ -38,26 +38,29 @@ class GameManager:
         self.__game_state = "PLAYING"
         self.__wave = 1
     
-    def spawn_enemy(self):
-        """Spawn enemy baru berdasarkan wave"""
-        current_time = pygame.time.get_ticks()
+def spawn_enemy(self):
+    """Spawn enemy baru berdasarkan wave"""
+    current_time = pygame.time.get_ticks()
+    
+    if current_time - self.__spawn_timer >= self.__spawn_delay:
+        x = random.randint(20, self.__screen_width - 60)
+        y = random.randint(-100, -50)
         
-        if current_time - self.__spawn_timer >= self.__spawn_delay:
-            x = random.randint(20, self.__screen_width - 60)
-            y = random.randint(-100, -50)
-            
-            # 70% chance asteroid, 30% chance fast enemy
-            if random.random() < 0.7:
-                enemy = Asteroid(x, y)
-            else:
-                enemy = FastEnemy(x, y)
-            
-            self.__enemies.append(enemy)
-            self.__spawn_timer = current_time
-            
-            # Increase difficulty every 5 enemies
-            if len(self.__enemies) % 5 == 0:
-                self.__spawn_delay = max(400, self.__spawn_delay - 50)
+        # DEBUG: Print untuk cek apakah random bekerja
+        print(f"Spawning enemy at X={x}, Y={y}")  # TAMBAHKAN INI
+        
+        # 70% chance asteroid, 30% chance fast enemy
+        if random.random() < 0.7:
+            enemy = Asteroid(x, y)
+        else:
+            enemy = FastEnemy(x, y)
+        
+        self.__enemies.append(enemy)
+        self.__spawn_timer = current_time
+        
+        # Increase difficulty every 5 enemies
+        if len(self.__enemies) % 5 == 0:
+            self.__spawn_delay = max(400, self.__spawn_delay - 50)
     
     def check_collisions(self):
         """Cek collision antara bullets dan enemies, serta player dan enemies"""
