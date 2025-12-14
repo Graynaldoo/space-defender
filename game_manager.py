@@ -1,9 +1,3 @@
-"""
-game_manager.py
-GameManager class - Mengelola game state dan logic
-Demonstrasi composition dan aggregation
-"""
-
 import pygame
 import random
 from player import Player
