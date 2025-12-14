@@ -1,9 +1,19 @@
+"""
+game_manager.py
+GameManager class - Mengelola game state dan logic
+Demonstrasi composition dan aggregation
+"""
+
 import pygame
 import random
 from player import Player
 from enemy import Asteroid, FastEnemy
 
 class GameManager:
+    """
+    GameManager class - Mengelola game state dan logic
+    Demonstrasi composition dan aggregation
+    """
     def __init__(self, screen_width, screen_height):
         self.__screen_width = screen_width
         self.__screen_height = screen_height
@@ -28,26 +38,26 @@ class GameManager:
         self.__game_state = "PLAYING"
         self.__wave = 1
     
-def spawn_enemy(self):
-    """Spawn enemy baru berdasarkan wave"""
-    current_time = pygame.time.get_ticks()
-    
-    if current_time - self.__spawn_timer >= self.__spawn_delay:
-        x = random.randint(20, self.__screen_width - 60)
-        y = random.randint(-100, -50)
+    def spawn_enemy(self):
+        """Spawn enemy baru berdasarkan wave"""
+        current_time = pygame.time.get_ticks()
         
-        # 70% chance asteroid, 30% chance fast enemy
-        if random.random() < 0.7:
-            enemy = Asteroid(x, y)
-        else:
-            enemy = FastEnemy(x, y)
-        
-        self.__enemies.append(enemy)
-        self.__spawn_timer = current_time
-        
-        # Increase difficulty
-        if len(self.__enemies) % 5 == 0:
-            self.__spawn_delay = max(400, self.__spawn_delay - 50)
+        if current_time - self.__spawn_timer >= self.__spawn_delay:
+            x = random.randint(20, self.__screen_width - 60)
+            y = random.randint(-100, -50)
+            
+            # 70% chance asteroid, 30% chance fast enemy
+            if random.random() < 0.7:
+                enemy = Asteroid(x, y)
+            else:
+                enemy = FastEnemy(x, y)
+            
+            self.__enemies.append(enemy)
+            self.__spawn_timer = current_time
+            
+            # Increase difficulty every 5 enemies
+            if len(self.__enemies) % 5 == 0:
+                self.__spawn_delay = max(400, self.__spawn_delay - 50)
     
     def check_collisions(self):
         """Cek collision antara bullets dan enemies, serta player dan enemies"""
