@@ -73,33 +73,6 @@ GameManager (Coordinator)
 
 ---
 
-## 🚀 Cara Menjalankan
-
-### Prerequisites
-
-- Python 3.8 atau lebih tinggi
-- Pygame library
-
-### Installation
-
-1. **Clone repository:**
-```bash
-git clone https://github.com/[username]/space-defender.git
-cd space-defender
-```
-
-2. **Install dependencies:**
-```bash
-pip install -r requirements.txt
-```
-
-3. **Run game:**
-```bash
-python main.py
-```
-
----
-
 ## 🎮 Cara Bermain
 
 ### Controls
